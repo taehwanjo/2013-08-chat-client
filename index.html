@@ -6,16 +6,25 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="vendor/jquery/jquery-1.9.1.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
     <script src="js/setup.js"></script>
   </head>
   <body>
       <h1>Chat with JSON!</h1>
       <br>Room Selector: <select class="rooms"></select>
-    <input class="draft" type="text"></input>
-    <button>Send</button>
+    <input class="draft" type="text"></input><button class="send">Send</button>
+    <br>    <input class="newRoom" type="text"></input>
+    <button class="newRoomButton">Create New Room</button>
     <div id="main" click="">
       <ol class="messages">
       </ol>
     </div>
+    <div id="friendListContainer">
+    Friends:<br>
+      <div id="friendList">
+
+      </div>
+    </div>
+
   </body>
 </html>

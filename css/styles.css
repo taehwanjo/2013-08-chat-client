@@ -42,3 +42,19 @@ body {
 ol {
     list-style-type: none;
 }
+
+.username {
+    cursor: pointer;
+}
+
+/*#friendList {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+}*/
+
+#friendListContainer{
+    position:absolute;
+    top:100px;
+    right: 100px;
+}
