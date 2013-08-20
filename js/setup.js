@@ -26,6 +26,9 @@ $.ajaxPrefilter(function(settings, _, jqXHR) {
 });
 
 var messageList = $(".messages");
+var roomList = $('.rooms');
+var roomObj = {};
+var currentRoom;
 
 var postMessage = function(username, message, room) {
 
@@ -38,13 +41,13 @@ var postMessage = function(username, message, room) {
     url: 'https://api.parse.com/1/classes/messages',
     data: jsonText,
     success: function(data) {
-      console.log('succes!: ' + data);
+      console.log('success!: ' + data);
     }
   });
 
 };
 
-var fetchMessages = function() {
+var fetchMessages = function(firstLoad) {
 
   $.get(
     'https://api.parse.com/1/classes/messages?order=-createdAt',
@@ -52,6 +55,22 @@ var fetchMessages = function() {
       console.log(data);
       messageList.empty();
       $.each(data.results, function(key, value) {
+
+      if (currentRoom === undefined) { //generate room list
+        if (roomObj[value.roomname]===undefined) {
+          roomObj[value.roomname] = 1;
+        } else {
+          roomObj[value.roomname] += 1;
+        }
+
+//iterate through all messages irrespective of the value.roomname of them
+
+      } else {
+        //iterate through all messages, grab only messages with value.roomname = currentRoom
+        //store matching messages in variable.
+
+      }
+
 
         var messageSpan = $('<span>').text(value.text);
         var usernameSpan = $('<span>').text(value.username);
@@ -64,6 +83,16 @@ var fetchMessages = function() {
         messageList.append(newMessage);
 
       });
+
+
+      if (firstLoad) {
+          roomList.append('<option>----</option>');
+        for (var key in roomObj) {
+          var roomOption = $('<option>').text(key);
+          roomList.append(roomOption);
+        }
+      }
+
     }
   );
 };
@@ -77,7 +106,14 @@ $('button').on('click', function(){
   $('.draft').val('');
 });
 
-fetchMessages();
+$('.rooms').change(function() {
+
+  currentRoom = $(".rooms").val();
+    console.log(currentRoom);
+
+});
+
+fetchMessages(true);
 
 setInterval(fetchMessages, 1000);
 
