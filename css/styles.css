@@ -38,3 +38,7 @@ body {
     color: green;
     line-height: 13px;
 }
+
+ol {
+    list-style-type: none;
+}
