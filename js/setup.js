@@ -31,7 +31,12 @@ var roomObj = {};
 var currentRoom;
 var friendList = [];
 
-// var Message = Backbone.Model.extend();
+// var Message = Backbone.Model.extend({
+//   url: 'https://api.parse.com/1/classes/messages',
+//   contentType: 'application/json',
+// });
+// var message = new Message();
+// message.save({})
 // var MessageView = Backbone.View.extend({model: Message});
 // MessageView.render = function() {
 //   
@@ -39,6 +44,34 @@ var friendList = [];
 // Message.prototype.add = function() {
 // 
 // }
+
+// var Message = Backbone.Model.extend({
+//   url: 'https://api.parse.com/1/classes/messages',
+//   contentType: 'application/json'
+// });
+
+// var Messages = function(){
+
+// };
+
+// Messages.prototype.add = function() {
+//   var message = new Message();
+//   message.save({})
+// };
+
+// var Message = Backbone.Model.extend({
+//   url: 'https://api.parse.com/1/classes/messages'
+// });
+
+// var MessageView = Backbone.View.extend({
+//   initialize: function() {}
+// });
+
+// var MessageView = Backbone.View.extend({
+//   render: function(messages) {
+//     this.$el.html(messages.get());
+//   }
+// });
 
 var createRoom = function(room) {
   var jsonText = JSON.stringify({roomname: room});
